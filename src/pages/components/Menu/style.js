@@ -28,8 +28,16 @@ export const Titulo = styled.h1`
 `;
 
 export const ContentLogo = styled.div`
-  display: flex;
   justify-content: center;
+  margin-top: 30px;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: ${({ open }) => (open ? "380px" : "0px")};
+  height: ${({ open }) => (open ? "245px" : "110px")};
+
+  @media (max-width: 1024px) {
+    width: ${({ open }) => (open ? "300px" : "170px")};
+  }
 `;
 
 export const ListaMenu = styled.div``;

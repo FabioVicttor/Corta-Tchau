@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Burger from "./components/Menu/Burger/Burger";
 import Menu from "./components/Menu/index";
 import Home from "../pages/home/index";
+import LoginModal from "./components/Moldal/Login/index";
 import { useOnClickOutside } from "./hooks";
 
 export default function Index() {
@@ -17,6 +18,7 @@ export default function Index() {
           <Burger open={open} setOpen={setOpen}></Burger>
           <Menu open={open} setOpen={setOpen}></Menu>
         </div>
+        <LoginModal />
         <Home />
       </div>
     </div>

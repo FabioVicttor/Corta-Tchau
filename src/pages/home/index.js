@@ -1,9 +1,10 @@
 import React from "react";
+import {ContentHome} from "./style"
+
 
 export default function Home() {
   return (
-    <div>
-     
-    </div>
+    <ContentHome>
+    </ContentHome>
   );
 }

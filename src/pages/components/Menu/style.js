@@ -46,11 +46,13 @@ export const ListaMenu = styled.div`
   margin-top: ${({ open }) => (open ? "10px" : "0px")};
 `;
 
-export const ItemMenu = styled.div`
+export const ItemMenu = styled.button`
   height: 65px;
+  width: 100%;
+  border: none;
   z-index: 10;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;;
   align-items: center;
   padding: 5px;
   justify-content: center;
@@ -69,7 +71,7 @@ export const ItemMenu = styled.div`
     box-shadow: 0px 4px 10px 0px black;
     /* box-shadow: 0px 0px 7px 0px black; */
     color: white;
-    background-color: #e5383b;
+    background:linear-gradient(90deg, rgba(102,7,8,1) 0%, rgba(164,22,26,1) 15%, rgba(186,24,27,1) 100%);;
     transition: transform 0.5s ease-in-out;
 
     svg {

@@ -5,7 +5,7 @@ import Login from "../../assets/icons/Login/Login";
 import Agenda from "../../assets/icons/Agenda/Agenda";
 
 import { useDispatch } from "react-redux";
-import { setShow } from "../../../redux/actions";
+import { setShow, setShowContatos } from "../../../redux/actions";
 
 export default function Menu({ open, setOpen }) {
   
@@ -15,6 +15,12 @@ export default function Menu({ open, setOpen }) {
     dispatch(setShow());
   }
    /*Controla Modal do Login*/
+
+  /*Controla Modal de Contatos*/
+  function showModalContatos() {
+    dispatch(setShowContatos());
+  }
+   /*Controla Modal de Contatos*/
 
   return (
     <LeftMenu open={open}>
@@ -31,8 +37,8 @@ export default function Menu({ open, setOpen }) {
           <Agenda />
           <h2>Agendamento</h2>
         </ItemMenu>
-        <ItemMenu open={open}>
-          <h2>Home</h2>
+        <ItemMenu open={open} onClick={showModalContatos}>
+          <h2>Contatos</h2>
         </ItemMenu>
       </ListaMenu>
     </LeftMenu>

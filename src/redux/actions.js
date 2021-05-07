@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER, SHOW } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, SET_FILTER, SHOW, SHOW_CONTATOS } from "./actionTypes";
 
 let nextTodoId = 0;
 
@@ -22,4 +22,8 @@ export const setFilter = (filter) => ({
 
 export const setShow = () => ({
   type: SHOW,
+});
+
+export const setShowContatos = () => ({
+  type: SHOW_CONTATOS,
 });

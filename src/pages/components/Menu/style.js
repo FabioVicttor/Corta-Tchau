@@ -65,6 +65,7 @@ export const ItemMenu = styled.button`
     height: 45px;
     width: 30px;
     fill: black;
+    margin-right:  ${({ open }) => (open ? "5px" : "0px")};
   }
 
   :hover {

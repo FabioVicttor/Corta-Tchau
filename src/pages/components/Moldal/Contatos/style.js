@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components/macro'
 
 export const Content = styled.div`
   z-index: 110;
@@ -38,8 +38,8 @@ export const X2 = styled.div`
 
 export const Modal = styled.div`
   box-shadow: 0px 0px 12px 0px black;
-  width: 500px;
-  height: 700px;
+  width: 755px;
+  height: 710px;
   background: linear-gradient(
     45deg,
     rgba(102, 7, 8, 1) 0%,
@@ -48,6 +48,16 @@ export const Modal = styled.div`
   );
   border-radius: 20px;
   margin-top: 50px;
+
+  @media (max-width: 768px) {
+    width: 755px;
+    height: 710px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 755px;
+    height: 710px;
+  }
 `;
 
 export const ContentModal = styled.div`
@@ -57,13 +67,30 @@ export const ContentModal = styled.div`
   /* display: flex; */
 `;
 
+export const ContentItens = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-around;
+  margin-top: 100px;
+`;
+
 export const ItemModal = styled.div`
   display: flex;
   justify-content: center;
-  margin: 50px;
-`;
-
-export const TableContatos = styled.table`
+  margin: 35px;
+  background: linear-gradient(
+    49deg,
+    rgba(211, 211, 211, 1) 0%,
+    rgba(245, 243, 244, 1) 30%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  height: 200px;
+  width: 200px;
+  border-radius: 25px;
+  h1 {
+    color: black;
+  }
 `;
 
 export const ButtonLogin = styled.button`
@@ -93,3 +120,6 @@ export const Item = styled.div`
     cursor: pointer;
   }
 `;
+
+
+//----------------------------------

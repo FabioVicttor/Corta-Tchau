@@ -86,10 +86,13 @@ export const ItemModal = styled.div`
     rgba(255, 255, 255, 1) 100%
   );
   height: 200px;
-  width: 200px;
+  width: 240px;
   border-radius: 25px;
   h1 {
     color: black;
+  }
+  :hover{
+    box-shadow: 0px 0px 20px black;
   }
 `;
 

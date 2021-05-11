@@ -100,3 +100,7 @@ export const Item = styled.div`
     cursor: pointer;
   }
 `;
+
+export const ContentLogo = styled.div`
+  margin-left: 100px;
+`;

@@ -12,9 +12,11 @@ import {
   X1,
   X2,
   ContentItens,
+  ContentTitle,
 } from "./style";
 import { motion } from "framer-motion";
 import AnimetedDiv from "../../Animeted/AnimatedDiv";
+import TelefoneIcon from "../../../assets/icons/Contatos/Telefone";
 
 // import { useSpring, animated } from "react-spring";
 
@@ -80,10 +82,43 @@ export default function ModalContatos() {
                     <X1></X1>
                     <X2></X2>
                   </ContentX>
+                  <ContentTitle>
+                    SUPORTE
+                  </ContentTitle>
                   <ContentItens>
                     <AnimetedDiv>
                       <ItemModal>
-                        <h1>Bahia</h1>
+                        <div style={{textAlign: "center"}}>
+                          <div>
+                            <h1>Bahia</h1>
+                          </div>
+
+                          <div style={{
+                            color: "black",
+                            fontSize: "20px",
+                            }}>
+                            <AnimetedDiv>
+                              <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "center",
+                                alignItems: "center"
+                              }}>
+                                <div style={{
+                                  width:"20px",
+                                }}>
+                                  <TelefoneIcon />
+                                </div>
+                                
+                                <div style={{
+                                  marginLeft: "10px",
+                                }}>
+                                  (11) 24242424
+                                </div>
+                              </div>
+                            </AnimetedDiv>
+                          </div>
+                        </div>
                       </ItemModal>
                     </AnimetedDiv>
                     <AnimetedDiv>

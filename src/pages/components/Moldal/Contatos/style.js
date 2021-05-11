@@ -39,7 +39,7 @@ export const X2 = styled.div`
 export const Modal = styled.div`
   box-shadow: 0px 0px 12px 0px black;
   width: 755px;
-  height: 710px;
+  height: 850px;
   background: linear-gradient(
     45deg,
     rgba(102, 7, 8, 1) 0%,
@@ -122,6 +122,17 @@ export const Item = styled.div`
   :hover {
     cursor: pointer;
   }
+`;
+
+export const ContentTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: flex-end;
+  margin: 20px;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
 `;
 
 

@@ -12,9 +12,11 @@ import {
   X1,
   X2,
   ContentItens,
+  ContentTitle,
 } from "./style";
 import { motion } from "framer-motion";
 import AnimetedDiv from "../../Animeted/AnimatedDiv";
+import TelefoneIcon from "../../../assets/icons/Contatos/Telefone";
 
 // import { useSpring, animated } from "react-spring";
 
@@ -80,13 +82,155 @@ export default function ModalContatos() {
                     <X1></X1>
                     <X2></X2>
                   </ContentX>
+                  <ContentTitle>
+                    <AnimetedDiv>
+                      SUPORTE
+                    </AnimetedDiv>
+                  </ContentTitle>
                   <ContentItens>
                     <AnimetedDiv>
                       <ItemModal>
-                        <h1>Bahia</h1>
+                        <div style={{
+                          textAlign: "center"
+                          }}>
+                          <div>
+                            <h1>Bahia</h1>
+                          </div>
+
+                          <div style={{
+                            color: "black",
+                            fontSize: "20px",
+                            }}>
+                            <AnimetedDiv>
+                              <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "center",
+                                alignItems: "center"
+                              }}>
+                                <div style={{
+                                  width:"20px",
+                                }}>
+                                  <TelefoneIcon />
+                                </div>
+                                
+                                <div style={{
+                                  marginLeft: "10px",
+                                }}>
+                                  (11) 924242424
+                                </div>
+                              </div>
+                            </AnimetedDiv>
+                          </div>
+                        </div>
                       </ItemModal>
                     </AnimetedDiv>
                     <AnimetedDiv>
+                      <ItemModal>
+                        <div style={{textAlign: "center"}}>
+                          <div>
+                            <h1>Evaldo</h1>
+                          </div>
+
+                          <div style={{
+                            color: "black",
+                            fontSize: "20px",
+                            }}>
+                            <AnimetedDiv>
+                              <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "center",
+                                alignItems: "center"
+                                }}>
+                                <div style={{
+                                  width:"20px",
+                                  }}>
+                                  <TelefoneIcon />
+                                </div>
+                                
+                                <div style={{
+                                  marginLeft: "10px",
+                                  }}>
+                                  (11) 912345678
+                                </div>
+                              </div>
+                            </AnimetedDiv>
+                          </div>
+                        </div>
+                      </ItemModal>
+                    </AnimetedDiv>
+                    <AnimetedDiv>
+                      <ItemModal>
+                        <div style={{textAlign: "center"}}>
+                          <div>
+                            <h1>Simonoia</h1>
+                          </div>
+
+                          <div style={{
+                            color: "black",
+                            fontSize: "20px",
+                            }}>
+                            <AnimetedDiv>
+                              <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "center",
+                                alignItems: "center"
+                                }}>
+                                <div style={{
+                                  width:"20px",
+                                  }}>
+                                  <TelefoneIcon />
+                                </div>
+                                
+                                <div style={{
+                                  marginLeft: "10px",
+                                  }}>
+                                  (11) 987654321
+                                </div>
+                              </div>
+                            </AnimetedDiv>
+                          </div>
+                        </div>
+                      </ItemModal>
+                    </AnimetedDiv>
+                    <AnimetedDiv>
+                      <ItemModal>
+                        <div style={{textAlign: "center"}}>
+                          <div>
+                            <h1>Mortadelinha</h1>
+                          </div>
+
+                          <div style={{
+                            color: "black",
+                            fontSize: "20px",
+                            }}>
+                            <AnimetedDiv>
+                              <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "center",
+                                alignItems: "center"
+                                }}>
+                                <div style={{
+                                  width:"20px",
+                                  }}>
+                                  <TelefoneIcon />
+                                </div>
+                                
+                                <div style={{
+                                  marginLeft: "10px",
+                                  }}>
+                                  (11) 955554444
+                                </div>
+                              </div>
+                            </AnimetedDiv>
+                          </div>
+                        </div>
+                      </ItemModal>
+                    </AnimetedDiv>
+                    {/* <AnimetedDiv>
                       <ItemModal>
                         <h1>Evaldo</h1>
                       </ItemModal>
@@ -100,7 +244,7 @@ export default function ModalContatos() {
                       <ItemModal>
                         <h1>Simonoia</h1>
                       </ItemModal>
-                    </AnimetedDiv>
+                    </AnimetedDiv> */}
                   </ContentItens>
                 </ContentModal>
               </form>
@@ -109,7 +253,9 @@ export default function ModalContatos() {
         </Content>
       </div>
     );
-  } else {
+  }
+  
+  else {
     return null;
   }
 }

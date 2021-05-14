@@ -16,8 +16,10 @@ import {
   ContentX,
   X1,
   X2,
+  ContentLogo,
 } from "./style";
 import { motion } from "framer-motion";
+import Logo2 from '../../../assets/icons/Logo/Logo2';
 
 // import { Login } from "../../../../services/Login/services";
 
@@ -67,13 +69,16 @@ export default function ModalLogin() {
                     <X1></X1>
                     <X2></X2>
                   </ContentX>
-                  <div style={{ marginTop: "170px" }}>
+                  <ContentLogo>
+                    <Logo2 />
+                  </ContentLogo>
+                  <div style={{ marginTop: "70px" }}>
                     <ItemModal>
                       <InputLogin
-                        name="loginemail"
-                        id="loginemail"
+                        name="loginTelefone"
+                        id="loginTelefone"
                         type="text"
-                        placeholder="E-Mail"
+                        placeholder="Telefone"
                       />
                     </ItemModal>
                     <ItemModal>
@@ -82,6 +87,7 @@ export default function ModalLogin() {
                         id="senhalogin"
                         type="password"
                         placeholder="Senha"
+                        maxLength="20"
                       />
                     </ItemModal>
                     <ItemModal>

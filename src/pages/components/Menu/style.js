@@ -43,7 +43,7 @@ export const ContentLogo = styled.div`
 `;
 
 export const ListaMenu = styled.div`
-  margin-top: ${({ open }) => (open ? "10px" : "0px")};
+  margin-top: ${({ open }) => (open ? "30px" : "0px")};
 `;
 
 export const ItemMenu = styled.button`

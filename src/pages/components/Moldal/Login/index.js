@@ -75,8 +75,8 @@ export default function ModalLogin() {
                   <div style={{ marginTop: "70px" }}>
                     <ItemModal>
                       <InputLogin
-                        name="loginemail"
-                        id="loginemail"
+                        name="loginTelefone"
+                        id="loginTelefone"
                         type="text"
                         placeholder="Telefone"
                       />
@@ -87,6 +87,7 @@ export default function ModalLogin() {
                         id="senhalogin"
                         type="password"
                         placeholder="Senha"
+                        maxLength="20"
                       />
                     </ItemModal>
                     <ItemModal>

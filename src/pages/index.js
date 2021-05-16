@@ -3,7 +3,8 @@ import Burger from "./components/Menu/Burger/Burger";
 import Menu from "./components/Menu/index";
 import Home from "../pages/home/index";
 import LoginModal from "./components/Moldal/Login/index";
-import ContatosModal from './components/Moldal/Contatos/index';
+import ContatosModal from "./components/Moldal/Contatos/index";
+import ModalAgenda from "./components/Moldal/Agenda/index";
 import { useOnClickOutside } from "./hooks";
 
 export default function Index() {
@@ -20,7 +21,8 @@ export default function Index() {
           <Menu open={open} setOpen={setOpen}></Menu>
         </div>
         <LoginModal />
-        <ContatosModal/>
+        <ModalAgenda />
+        <ContatosModal />
         <Home />
       </div>
     </div>

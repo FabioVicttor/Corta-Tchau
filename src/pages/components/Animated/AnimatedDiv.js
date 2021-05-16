@@ -3,7 +3,7 @@ import { useSpring, animated } from "react-spring";
 
 // import { Login } from "../../../../services/Login/services";
 
-export default function AnimetedDiv({children}) {
+export default function AnimatedDiv({children}) {
 
   // Card 3D
   const calc = (x, y) => [

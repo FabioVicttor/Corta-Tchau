@@ -1,13 +1,15 @@
 import React from "react";
-import {ContentHome,ContentHeader,ContentBody,ContentFooter} from "./style"
-
+import { ContentHome } from "./style";
+import Body from "../components/Body/index";
+import Header from "../components/Header/index";
+import Footer from "../components/Footer/index";
 
 export default function Home() {
   return (
     <ContentHome>
-      <ContentHeader>CABEÇALHO</ContentHeader>
-      <ContentBody>BODY</ContentBody>
-      <ContentFooter>FOOTER</ContentFooter>
+      <Header />
+      <Body />
+      <Footer />
     </ContentHome>
   );
 }

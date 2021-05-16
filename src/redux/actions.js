@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER, SHOW, SHOW_CONTATOS } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, SET_FILTER, SHOW, SHOW_CONTATOS, SHOW_AGENDA } from "./actionTypes";
 
 let nextTodoId = 0;
 
@@ -26,4 +26,8 @@ export const setShow = () => ({
 
 export const setShowContatos = () => ({
   type: SHOW_CONTATOS,
+});
+
+export const setShowAgenda = () => ({
+  type: SHOW_AGENDA,
 });

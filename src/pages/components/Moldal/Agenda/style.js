@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
 export const Content = styled.div`
   z-index: 110;
@@ -38,8 +38,8 @@ export const X2 = styled.div`
 
 export const Modal = styled.div`
   box-shadow: 0px 0px 12px 0px black;
-  width: 755px;
-  height: 765px;
+  width: 500px;
+  height: 700px;
   background: linear-gradient(
     45deg,
     rgba(102, 7, 8, 1) 0%,
@@ -48,16 +48,6 @@ export const Modal = styled.div`
   );
   border-radius: 20px;
   margin-top: 50px;
-
-  @media (max-width: 768px) {
-    width: 755px;
-    height: 710px;
-  }
-
-  @media (max-width: 1024px) {
-    width: 755px;
-    height: 710px;
-  }
 `;
 
 export const ContentModal = styled.div`
@@ -67,51 +57,20 @@ export const ContentModal = styled.div`
   /* display: flex; */
 `;
 
-export const ContentItens = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
-  justify-content: space-around;
-  /* margin-top: 100px; */
-`;
-
 export const ItemModal = styled.div`
-  text-align: center;
   display: flex;
   justify-content: center;
-  margin: 35px;
-  background: linear-gradient(
-    49deg,
-    rgba(211, 211, 211, 1) 0%,
-    rgba(245, 243, 244, 1) 30%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  height: 200px;
-  width: 240px;
-  border-radius: 25px;
-  h1 {
-    color: black;
-  }
-  :hover {
-    box-shadow: 0px 0px 20px black;
-  }
+  margin: 50px;
 `;
 
-export const ContentDetalheItemModal = styled.div`
-  color: black;
-  font-size: 20px;
-`;
-export const DetalheItemModal = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-`;
-export const ContentIconItemModal = styled.div`
-  width: 20px;
-`;
-export const ContentTelItemModal = styled.div`
-  margin-left: 10px;
+export const InputLogin = styled.input`
+  width: 295px;
+  height: 40px;
+  border-radius: 25px;
+  padding: 5px;
+  border: 0;
+  outline: none;
+  text-align: center;
 `;
 
 export const ButtonLogin = styled.button`
@@ -142,15 +101,6 @@ export const Item = styled.div`
   }
 `;
 
-export const ContentTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: flex-end;
-  margin: 20px;
-  color: white;
-  font-size: 50px;
-  font-weight: bold;
+export const ContentLogo = styled.div`
+  margin-left: 100px;
 `;
-
-//----------------------------------

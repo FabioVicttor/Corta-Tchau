@@ -30,3 +30,4 @@ export const getTodosByVisibilityFilter = (store, visibilityFilter) => {
 
 export const ModalState = (store) => store.ModalLogin.show;
 export const ModalStateContatos = (store) => store.ModalContatos.showContatos;
+export const ModalStateAgenda = (store) => store.ModalAgenda.showAgenda;

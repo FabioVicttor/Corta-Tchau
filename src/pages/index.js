@@ -23,7 +23,7 @@ export default function Index() {
         <LoginModal />
         <ModalAgenda />
         <ContatosModal />
-        <Home />
+        <Home open={open} setOpen={setOpen} />
       </div>
     </div>
   );

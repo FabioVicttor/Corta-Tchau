@@ -1,28 +1,40 @@
 import React from "react";
 import { ContentBody, ContentItem, DetalhetItem, ImgItem } from "./style";
 import AnimatedDiv from "../Animated/AnimatedDiv";
+import { useDispatch } from "react-redux";
+import { setShowAgenda,setCorte } from "../../../redux/actions";
 
-export default function Body() {
-  function agendar(item) {
-    console.log(item);
+export default function Body({ setOpen }) {
+  /*Controla Modal de Agenda*/
+  const dispatch = useDispatch();
+  function showModalAgenda() {
+    dispatch(setShowAgenda());
+    setOpen(false);
   }
+  /*Controla Modal de Agenda*/
+
+  function agendar(item) {
+    showModalAgenda();
+    setCorte(item);
+  }
+  
   return (
     <ContentBody>
       {Cortes.map((item) => (
-        <AnimatedDiv>
-          <ContentItem key={item.id}>
+        <AnimatedDiv key={item.id}>
+          <ContentItem>
             <ImgItem src={item.foto} />
             <DetalhetItem>
               <div>Nome: {item.item}</div>
               <div>Tipo: {item.tipo}</div>
               <div>R${item.preco}</div>
-              {/* <button
+              <button
                 onClick={() => {
                   agendar(item.id);
                 }}
               >
                 Agendar
-              </button> */}
+              </button>
             </DetalhetItem>
           </ContentItem>
         </AnimatedDiv>

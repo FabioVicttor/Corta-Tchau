@@ -1,8 +1,20 @@
 import React from "react";
-import { ContentBody, ContentItem, DetalhetItem, ImgItem } from "./style";
+import {
+  Content,
+  ContentBody,
+  Title,
+  ContentBodyCortes,
+  ContentBodyAgendar,
+  ContentButtonAgendar,
+  ContentItem,
+  DetalhetItem,
+  ImgItem,
+  ButtonAgendar,
+} from "./style";
 import AnimatedDiv from "../Animated/AnimatedDiv";
+import Agenda from "../../assets/icons/Agenda/Agenda";
 import { useDispatch } from "react-redux";
-import { setShowAgenda,setCorte } from "../../../redux/actions";
+import { setShowAgenda } from "../../../redux/actions";
 
 export default function Body({ setOpen }) {
   /*Controla Modal de Agenda*/
@@ -13,32 +25,44 @@ export default function Body({ setOpen }) {
   }
   /*Controla Modal de Agenda*/
 
-  function agendar(item) {
-    showModalAgenda();
-    setCorte(item);
-  }
-  
+  // function agendar(item) {
+  //   showModalAgenda();
+  //   setCorte(item);
+  // }
+
   return (
-    <ContentBody>
-      {Cortes.map((item) => (
-        <AnimatedDiv key={item.id}>
-          <ContentItem>
-            <ImgItem src={item.foto} />
-            <DetalhetItem>
-              <div>Nome: {item.item}</div>
-              <div>Tipo: {item.tipo}</div>
-              <div>R${item.preco}</div>
-              <button
-                onClick={() => {
-                  agendar(item.id);
-                }}
-              >
-                Agendar
-              </button>
-            </DetalhetItem>
-          </ContentItem>
-        </AnimatedDiv>
-      ))}
+    <ContentBody style={{ width: "100%" }}>
+      <ContentBodyAgendar>
+        <h1>Um tapa na Careca, um corte, um milagre!</h1>
+        <span>
+          Bigodin Finin, Cabelin na regua - <strong>AGENDE</strong> agora seu
+          corte.
+        </span>
+        <ContentButtonAgendar>
+          <ButtonAgendar onClick={showModalAgenda}>
+            <Agenda />
+            Agendamento
+          </ButtonAgendar>
+        </ContentButtonAgendar>
+      </ContentBodyAgendar>
+      <ContentBodyCortes>
+        <Title>
+          <h1>Cortes</h1>
+        </Title>
+        <Content>
+          {Cortes.map((item) => (
+            <AnimatedDiv key={item.id}>
+              <ContentItem>
+                <ImgItem src={item.foto} />
+                <DetalhetItem>
+                  <div>Nome: {item.item}</div>
+                  <div>Tipo: {item.tipo}</div>
+                </DetalhetItem>
+              </ContentItem>
+            </AnimatedDiv>
+          ))}
+        </Content>
+      </ContentBodyCortes>
     </ContentBody>
   );
 }

@@ -2,12 +2,22 @@ import styled from "styled-components";
 
 export const ContentHeader = styled.div`
   background-color: white;
-  height: 250px;
+  height: 350px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 25px;
+`;
+export const ContentLogo = styled.div`
+  margin-top: -45px;
+  svg {
+    height: 340px;
+    width: 340px;
+  }
+  @media (min-width: 1025px) {
+    margin-left: 80px;
+  }
 `;
 
 export const HeaderTitle = styled.div`

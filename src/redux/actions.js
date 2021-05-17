@@ -1,4 +1,13 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER, SHOW, SHOW_CONTATOS, SHOW_AGENDA,CORTE } from "./actionTypes";
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  SET_FILTER,
+  SHOW,
+  SHOW_CONTATOS,
+  SHOW_AGENDA,
+  CORTE,
+  LOGIN,
+} from "./actionTypes";
 
 let nextTodoId = 0;
 
@@ -36,3 +45,12 @@ export const setCorte = () => ({
   type: CORTE,
 });
 
+export const setLogin = (phone, name, role, id) => ({
+  type: LOGIN,
+  payload: {
+    phone,
+    name,
+    role,
+    id,
+  },
+});

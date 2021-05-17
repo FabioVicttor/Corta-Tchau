@@ -5,3 +5,4 @@ export const SHOW = "SHOW";
 export const SHOW_CONTATOS = "SHOW_CONTATOS";
 export const SHOW_AGENDA = "SHOW_AGENDA";
 export const CORTE = "CORTE";
+export const LOGIN = "LOGIN";

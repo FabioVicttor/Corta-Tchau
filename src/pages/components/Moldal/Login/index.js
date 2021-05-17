@@ -18,7 +18,7 @@ import {
 import { motion } from "framer-motion";
 import Logo2 from "../../../assets/icons/Logo/Logo2";
 
-import { Login } from "../../../../services/Login/services";
+import { Loginho } from "../../../../services/Login/services";
 
 export default function ModalLogin() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export default function ModalLogin() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    Login(event.target[0].value, event.target[1].value);
+    console.log(Loginho(event.target[0].value, event.target[1].value));
   };
 
   if (showModal) {

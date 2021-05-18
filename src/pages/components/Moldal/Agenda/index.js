@@ -1,5 +1,9 @@
 import React from "react";
-import { ModalStateAgenda,ModalAgendaCorte } from "../../../../redux/selectors";
+import {
+  ModalStateAgenda,
+  ModalAgendaCorte,
+  DadosUsuario,
+} from "../../../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { setShowAgenda } from "../../../../redux/actions";
 import {
@@ -16,6 +20,7 @@ import Logo2 from "../../../assets/icons/Logo/Logo2";
 
 export default function ModalAgenda() {
   const dispatch = useDispatch();
+  const usuario = useSelector(DadosUsuario);
   const showModal = useSelector(ModalStateAgenda);
   const corte = useSelector(ModalAgendaCorte);
 
@@ -68,7 +73,26 @@ export default function ModalAgenda() {
                   <ContentLogo>
                     <Logo2 />
                   </ContentLogo>
+
                   <div style={{ marginTop: "70px" }}>
+                    {usuario.role === "barber" ? (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-around",
+                        }}
+                      >
+                        <div>
+                          <button>TODOS</button>
+                        </div>
+
+                        <div>
+                          <button>BARBEIRO</button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div />
+                    )}
                     <div
                       style={{
                         display: "flex",

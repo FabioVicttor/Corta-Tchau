@@ -5,10 +5,19 @@ import Login from "../../assets/icons/Login/Login";
 import Agenda from "../../assets/icons/Agenda/Agenda";
 import Contatos from "../../assets/icons/Contatos/Contatos";
 
-import { useDispatch } from "react-redux";
-import { setShow, setShowContatos, setShowAgenda } from "../../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setShow,
+  setShowContatos,
+  setShowAgenda,
+} from "../../../redux/actions";
+import { DadosUsuario } from "../../../redux/selectors";
 
 export default function Menu({ open, setOpen }) {
+  /*Dados Usuario*/
+  const usuario = useSelector(DadosUsuario);
+  /*Dados Usuario*/
+
   /*Controla Modal do Login*/
   const dispatch = useDispatch();
   function showModalLogin() {
@@ -26,8 +35,12 @@ export default function Menu({ open, setOpen }) {
 
   /*Controla Modal de Agenda*/
   function showModalAgenda() {
-    dispatch(setShowAgenda());
-    setOpen(false);
+    if (usuario.id !== null) {
+      dispatch(setShowAgenda());
+      setOpen(false);
+    } else {
+      dispatch(setShow());
+    }
   }
   /*Controla Modal de Agenda*/
 

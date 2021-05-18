@@ -57,6 +57,7 @@ export default function Body({ setOpen }) {
                 <DetalhetItem>
                   <div>Nome: {item.item}</div>
                   <div>Tipo: {item.tipo}</div>
+                  <div>R$ {formatarPreco(item.preco)}</div>
                 </DetalhetItem>
               </ContentItem>
             </AnimatedDiv>
@@ -67,6 +68,10 @@ export default function Body({ setOpen }) {
   );
 }
 
+function formatarPreco(preco){
+  return (preco.toFixed(2)).toString().replace('.', ',');
+}
+
 //OBJETO TESTE --- INICIO
 const Cortes = [
   {
@@ -74,84 +79,84 @@ const Cortes = [
     tipo: "Curto",
     item: "Corte 1",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.50,
   },
   {
     id: 2,
     tipo: "Longo",
     item: "Corte 2",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.05,
   },
   {
     id: 3,
     tipo: "Barba",
     item: "Corte 3",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
     id: 4,
     tipo: "Curto",
     item: "Corte 4",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
     id: 5,
     tipo: "Longo",
     item: "Corte 5",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
     id: 6,
     tipo: "Barba",
     item: "Corte 6",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
     id: 7,
     tipo: "Curto",
     item: "Corte 7",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
     id: 8,
     tipo: "Longo",
     item: "Corte 8",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
     id: 9,
     tipo: "Barba",
     item: "Corte 9",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
-    id: 10,
+    id: 10.00,
     tipo: "Curto",
     item: "Corte 10",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
     id: 11,
     tipo: "Longo",
     item: "Corte 11",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
   {
     id: 12,
     tipo: "Barba",
     item: "Corte 12",
     foto: "https://mhmcdn.ynvolve.net/?w=750&h=450&quality=90&clipping=landscape&url=//manualdohomemmoderno.com.br/files/2017/05/cortemilitar8.jpg",
-    preco: 10,
+    preco: 10.00,
   },
 ];
 //OBJETO TESTE -- FINAL

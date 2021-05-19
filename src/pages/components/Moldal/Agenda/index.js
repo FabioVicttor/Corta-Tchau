@@ -74,7 +74,7 @@ export default function ModalAgenda() {
                     <Logo2 />
                   </ContentLogo>
 
-                  <div style={{ marginTop: "70px" }}>
+                  <div style={{ marginTop: "30px" }}>
                     {usuario.role === "barber" ? (
                       <div
                         style={{
@@ -82,12 +82,36 @@ export default function ModalAgenda() {
                           justifyContent: "space-around",
                         }}
                       >
-                        <div>
-                          <button>TODOS</button>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "50%",
+                            height: "30px",
+                          }}
+                        >
+                          <button
+                            style={{
+                              width: "100%",
+                            }}
+                          >
+                            AGENDAR
+                          </button>
                         </div>
-
-                        <div>
-                          <button>BARBEIRO</button>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "50%",
+                          }}
+                        >
+                          <button
+                            style={{
+                              width: "100%",
+                            }}
+                          >
+                            HORARIOS MARCADOS
+                          </button>
                         </div>
                       </div>
                     ) : (

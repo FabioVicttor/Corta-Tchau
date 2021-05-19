@@ -38,7 +38,7 @@ export const X2 = styled.div`
 
 export const Modal = styled.div`
   box-shadow: 0px 0px 12px 0px black;
-  width: 500px;
+  width: 850px;
   height: 700px;
   background: linear-gradient(
     45deg,
@@ -102,5 +102,7 @@ export const Item = styled.div`
 `;
 
 export const ContentLogo = styled.div`
-  margin-left: 100px;
+  /* margin-left: 100px; */
+  display: flex;
+  justify-content: center;
 `;

@@ -106,3 +106,56 @@ export const ContentLogo = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const GridAgenda = styled.div`
+  width: 370px;
+  height: 250px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ContentItemGrid = styled.span`
+  width: 380px;
+  display: flex;
+  margin-top: 2px;
+`;
+export const ItemGridNome = styled.span`
+  width: 48%;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+`;
+export const ItemGridHorario = styled.span`
+  width: 48%;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+`;
+
+export const ButtonMenuAgenda = styled.button`
+  width: 95%;
+  height: 40px;
+  border-radius: 15px;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: transform 0.5s ease-in-out;
+  transition: 500ms;
+  color: black;
+
+  :hover {
+    box-shadow: 0px 0px 15px 0px #10002b;
+    width: 99%;
+    transition: 500ms;
+  }
+
+  :active {
+    box-shadow: 0px 0px 0px 0px #10002b;
+    transition: transform 0.5s ease-in-out;
+    width: 95%;
+    transition: 500ms;
+  }
+`;

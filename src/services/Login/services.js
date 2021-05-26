@@ -9,7 +9,7 @@ export async function Loginho(login, senha) {
         password: senha,
       }
     );
-    return teste.data.data.user;
+    return teste.data.data;
   } catch (error) {
     return "error";
   }

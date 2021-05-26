@@ -39,14 +39,16 @@ export default function ModalLogin() {
 
     user.then((e) => {
       if (e !== "error") {
-        dispatch(setLogin(e.phone, e.name, e.role, e.id));
+        dispatch(
+          setLogin(e.user.phone, e.user.name, e.user.role, e.user.id, e.token)
+        );
         // dispatch(setShow());
       }
     });
   };
 
   function DesLoginho() {
-    dispatch(setLogin(null, null, null, null));
+    dispatch(setLogin(null, null, null, null, null));
   }
 
   if (showModal) {

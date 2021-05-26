@@ -5,6 +5,7 @@ const initialState = {
   name: null,
   role: null,
   id: null,
+  token: null,
 };
 
 export default function Login(state = initialState, action) {
@@ -16,6 +17,7 @@ export default function Login(state = initialState, action) {
         name: action.payload.name,
         role: action.payload.role,
         id: action.payload.id,
+        token: action.payload.token,
       };
     }
     default:

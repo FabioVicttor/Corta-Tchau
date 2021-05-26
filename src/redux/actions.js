@@ -45,12 +45,13 @@ export const setCorte = () => ({
   type: CORTE,
 });
 
-export const setLogin = (phone, name, role, id) => ({
+export const setLogin = (phone, name, role, id, token) => ({
   type: LOGIN,
   payload: {
     phone,
     name,
     role,
     id,
+    token,
   },
 });

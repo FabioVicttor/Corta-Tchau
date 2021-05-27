@@ -1,7 +1,7 @@
 import React from "react";
 import { ModalState, DadosUsuario } from "../../../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
-import { setShow, setLogin } from "../../../../redux/actions";
+import { setShow, setShowCadastro, setLogin } from "../../../../redux/actions";
 import {
   Content,
   Modal,
@@ -31,6 +31,11 @@ export default function ModalLogin() {
 
   function showModalLogin() {
     dispatch(setShow());
+  }
+
+  function showModalCadastro() {
+    dispatch(setShow());
+    dispatch(setShowCadastro());
   }
 
   const handleSubmit = async (event) => {
@@ -99,7 +104,7 @@ export default function ModalLogin() {
                       </ItemModal>
                       <ItemModal>
                         <Item>Recuperar Senha</Item>
-                        <Item>Registrar-se</Item>
+                        <Item onClick={showModalCadastro}>Registrar-se</Item>
                       </ItemModal>
                     </div>
                   </ContentModal>

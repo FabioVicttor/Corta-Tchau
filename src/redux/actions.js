@@ -5,6 +5,7 @@ import {
   SHOW,
   SHOW_CONTATOS,
   SHOW_AGENDA,
+  SHOW_CADASTRO,
   CORTE,
   LOGIN,
 } from "./actionTypes";
@@ -39,6 +40,10 @@ export const setShowContatos = () => ({
 
 export const setShowAgenda = () => ({
   type: SHOW_AGENDA,
+});
+
+export const setShowCadastro = () => ({
+  type: SHOW_CADASTRO,
 });
 
 export const setCorte = () => ({

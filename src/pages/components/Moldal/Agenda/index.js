@@ -174,10 +174,10 @@ export default function ModalAgenda() {
                           </ItemGridNome>
                           <ItemGridHorario
                             style={{
-                              width: "75%",
+                              width: "65%",
                               textAlign: "center",
                               fontWeight: "bold",
-                              marginLeft: "2px",
+                              marginLeft: "10px",
                             }}
                           >
                             HORARIO
@@ -195,9 +195,9 @@ export default function ModalAgenda() {
                             </ItemGridNome>
                             <ItemGridHorario
                               style={{
-                                width: "75%",
+                                width: "65%",
                                 textAlign: "center",
-                                marginLeft: "2px",
+                                marginLeft: "10px",
                               }}
                             >
                               {item.data} - {item.hora}

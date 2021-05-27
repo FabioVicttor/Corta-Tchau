@@ -10,6 +10,7 @@ export const ContentHeader = styled.div`
   font-size: 25px;
 `;
 export const ContentLogo = styled.div`
+  display: flex;
   margin-top: -45px;
   svg {
     height: 340px;

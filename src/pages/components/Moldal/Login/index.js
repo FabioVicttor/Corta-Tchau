@@ -34,8 +34,8 @@ export default function ModalLogin() {
   }
 
   function showModalCadastro() {
-    dispatch(setShow());
     dispatch(setShowCadastro());
+    dispatch(setShow());
   }
 
   const handleSubmit = async (event) => {

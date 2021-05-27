@@ -1,7 +1,7 @@
 import React from "react";
 import { ContentHeader, ContentLogo } from "./style";
-import Logo from "../../assets/icons/Logo/Logo";
-// import img1 from "../../assets/image/img1.jpg";
+// import Logo from "../../assets/icons/Logo/Logo";
+import Fundo from "../../assets/image/Fundo.jpeg";
 // import img2 from "../../assets/image/img2.jpg";
 // import img3 from "../../assets/image/img3.jpg";
 // import img4 from "../../assets/image/img4.png";
@@ -13,10 +13,10 @@ export default function Header() {
   return (
     <ContentHeader>
       <ContentLogo>
-        <Logo />
+        {/* <Logo style={{ position: "absolut" }} /> */}
+        <img className="imgH" src={Fundo} />
       </ContentLogo>
 
-      {/* <img src={img7} width="1100" height="400" /> */}
       {/* <HeaderListra style={{ backgroundColor: "red" }} />
       <HeaderListra style={{ backgroundColor: "blue" }} /> */}
       {/* <HeaderTitle>

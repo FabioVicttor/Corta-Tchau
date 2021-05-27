@@ -5,6 +5,7 @@ import Home from "../pages/home/index";
 import LoginModal from "./components/Moldal/Login/index";
 import ContatosModal from "./components/Moldal/Contatos/index";
 import ModalAgenda from "./components/Moldal/Agenda/index";
+import ModalCadastro from "./components/Moldal/Cadastro/index";
 import { useOnClickOutside } from "./hooks";
 
 export default function Index() {
@@ -23,6 +24,7 @@ export default function Index() {
         <LoginModal />
         <ModalAgenda />
         <ContatosModal />
+        <ModalCadastro />
         <Home open={open} setOpen={setOpen} />
       </div>
     </div>

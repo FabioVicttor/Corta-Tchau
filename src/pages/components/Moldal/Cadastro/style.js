@@ -60,7 +60,15 @@ export const ContentModal = styled.div`
 export const ItemModal = styled.div`
   display: flex;
   justify-content: center;
-  margin: 50px;
+  margin: 35px;
+`;
+
+export const ItemModalButton = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5px;
 `;
 
 export const InputCadastro = styled.input`
@@ -73,7 +81,7 @@ export const InputCadastro = styled.input`
   text-align: center;
 `;
 
-export const ButtonLogin = styled.button`
+export const Button = styled.button`
   width: 150px;
   height: 40px;
   border-radius: 25px;

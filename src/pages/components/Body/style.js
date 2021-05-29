@@ -59,7 +59,7 @@ export const Title = styled.div`
 
 export const ContentItem = styled.div`
   height: 200px;
-  width: 150px;
+  width: 200px;
   background-color: white;
   margin: 10px;
   border-radius: 25px;
@@ -70,7 +70,9 @@ export const DetalhetItem = styled.div`
 `;
 
 export const ImgItem = styled.img`
-  width: 150px;
+  object-fit: cover;
+  height: 170px;
+  width: 200px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 `;

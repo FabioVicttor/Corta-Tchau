@@ -103,7 +103,6 @@ export default function ModalLogin() {
                         <ButtonLogin type="submit">ENTRAR</ButtonLogin>
                       </ItemModal>
                       <ItemModal>
-                        <Item>Recuperar Senha</Item>
                         <Item onClick={showModalCadastro}>Registrar-se</Item>
                       </ItemModal>
                     </div>

@@ -1,7 +1,5 @@
 import React from "react";
-import {
-  ModalStateCadastro,
-} from "../../../../redux/selectors";
+import { ModalStateCadastro } from "../../../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { setShowCadastro } from "../../../../redux/actions";
 import {
@@ -10,12 +8,13 @@ import {
   ContentModal,
   ItemModal,
   InputCadastro,
-  ButtonLogin,
-  Item,
+  Button,
   ContentX,
   X1,
   X2,
   ContentLogo,
+  ItemModalButton,
+  Item
 } from "./style";
 import { motion } from "framer-motion";
 import Logo2 from "../../../assets/icons/Logo/Logo2";
@@ -34,7 +33,6 @@ export default function ModalCadastro() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-   
   };
 
   if (ModalCadastro) {
@@ -64,18 +62,18 @@ export default function ModalCadastro() {
                   <div style={{ marginTop: "70px" }}>
                     <ItemModal>
                       <InputCadastro
-                        name="cadastroTelefone"
-                        id="cadastroTelefone"
-                        type="text"
-                        placeholder="Telefone"
-                      />
-                    </ItemModal>
-                    <ItemModal>
-                      <InputCadastro
                         name="cadastroNome"
                         id="cadastroNome"
                         type="text"
                         placeholder="Nome"
+                      />
+                    </ItemModal>
+                    <ItemModal>
+                      <InputCadastro
+                        name="cadastroTelefone"
+                        id="cadastroTelefone"
+                        type="text"
+                        placeholder="Telefone"
                       />
                     </ItemModal>
                     <ItemModal>
@@ -87,12 +85,10 @@ export default function ModalCadastro() {
                         maxLength="20"
                       />
                     </ItemModal>
-                    <ItemModal>
-                      <ButtonLogin type="submit">CADASTRAR</ButtonLogin>
-                    </ItemModal>
-                    <ItemModal>
-                      <Item>Já possuo um cadastro</Item>
-                    </ItemModal>
+                    <ItemModalButton>
+                      <Button type="submit">CADASTRAR</Button>
+                      <Item type="submit">Efetuar Login</Item>
+                    </ItemModalButton>
                   </div>
                 </ContentModal>
               </form>

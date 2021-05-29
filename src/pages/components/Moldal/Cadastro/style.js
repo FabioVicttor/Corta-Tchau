@@ -39,7 +39,7 @@ export const X2 = styled.div`
 export const Modal = styled.div`
   box-shadow: 0px 0px 12px 0px black;
   width: 500px;
-  height: 700px;
+  height: 750px;
   background: linear-gradient(
     45deg,
     rgba(102, 7, 8, 1) 0%,

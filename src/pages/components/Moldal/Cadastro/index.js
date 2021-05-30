@@ -1,7 +1,7 @@
 import React from "react";
 import { ModalStateCadastro } from "../../../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowCadastro } from "../../../../redux/actions";
+import { setShowCadastro, setShow } from "../../../../redux/actions";
 import {
   Content,
   Modal,
@@ -24,8 +24,8 @@ export default function ModalCadastro() {
   const dispatch = useDispatch();
   const ModalCadastro = useSelector(ModalStateCadastro);
 
-  let cadastrado = false;
-  let cadastroValido = true;
+  let [cadastrado, setCadastrado] = React.useState(false);
+  const [cadastroValido, setCadastroValido] = React.useState(true);
 
   React.useEffect(() => {
     document.body.style.overflow = ModalCadastro ? "hidden" : "auto";
@@ -35,8 +35,12 @@ export default function ModalCadastro() {
     dispatch(setShowCadastro());
   }
 
+  function showModalLogin(){
+    dispatch(setShowCadastro());
+    dispatch(setShow());
+  }
+
   const handleSubmit = async (event) => {
-    // debugger;
     event.preventDefault();
 
     const nome = event.target[0].value;
@@ -47,29 +51,29 @@ export default function ModalCadastro() {
     if(validaForm(nome, telefone, senha, senhaConfirmada)) {
       const cadastro = Cadastrar(telefone, nome, senha);
 
-      cadastroValido = true;
-      cadastrado = cadastro.then((response, reject) => {
-        if(response)
-          console.log(response);
+      setCadastroValido(true);
+       cadastro.then((response, reject) => {
+        if(response){
+          setCadastrado(true);
+        }
         else
-          console.log(reject);
+        setCadastrado(false);
       });
-    }
-    else{
-      cadastroValido = false;
-      console.log('form inválido');
     }
   };
 
   const validaForm = (nome, telefone, senha, confirmaSenha) => {
-    if(nome.length > 0 && nome.length <= 30) {
-      if(telefone.length == 11 && (senha.length > 0 && senha.length <= 20)){
-        if(senha === confirmaSenha)
-          return true;
-      }
+    if((nome.length > 0 && nome.length <= 30) &&
+      telefone.length == 11 && (senha.length > 0 && senha.length <= 20) &&
+      senha === confirmaSenha
+      ) {
+        return true;
     }
-    else
+    else {
+      setCadastroValido(false);
+      console.log('form inválido');
       return false;
+    }
   }
 
   if (ModalCadastro) {
@@ -135,12 +139,12 @@ export default function ModalCadastro() {
                       {cadastroValido ? 
                         <ItemModalButton>
                           <Button type="submit">CADASTRAR</Button>
-                          <Item type="submit">Efetuar Login</Item>
+                          <Item onClick={showModalLogin}>Efetuar Login</Item>
                         </ItemModalButton> : 
                         <ItemModalButton>
                           *Dados inválidos.
-                          <Button type="submit">CADASTRAR</Button>
-                          <Item type="submit">Efetuar Login</Item>
+                          <Button style={{marginTop: 15}} type="submit">CADASTRAR</Button>
+                          <Item onClick={showModalLogin}>Efetuar Login</Item>
                         </ItemModalButton>
                         }
                       
@@ -182,7 +186,7 @@ export default function ModalCadastro() {
                     </div>
                     <div>
                       <ItemModal>
-                        <Button onClick={showModalCadastro}>LOGIN</Button>
+                        <Button onClick={showModalLogin}>LOGIN</Button>
                       </ItemModal>
                     </div>
                   </div>

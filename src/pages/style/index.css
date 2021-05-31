@@ -42,6 +42,34 @@ code {
   );
 }
 
+.Grid::-webkit-scrollbar-track {
+  scrollbar-track-color: rgba(0, 0, 0, 0.13);
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0.13);
+  border-radius: 10px;
+}
+
+.Grid::-webkit-scrollbar {
+  z-index: 1;
+  scrollbar-track-color: rgba(0, 0, 0, 0.13);
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0.13);
+  border-radius: 10px;
+}
+
+.Grid::-webkit-scrollbar-thumb {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.44, #000000),
+    color-stop(0.72, #000000),
+    color-stop(0.86, #000000)
+  );
+}
+
 .imgH {
   object-fit: cover;
   width: 100%;

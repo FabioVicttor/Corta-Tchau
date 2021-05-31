@@ -64,7 +64,7 @@ export default function ModalCadastro() {
 
   const validaForm = (nome, telefone, senha, confirmaSenha) => {
     if((nome.length > 0 && nome.length <= 30) &&
-      telefone.length == 11 && (senha.length > 0 && senha.length <= 20) &&
+      telefone.length === 11 && (senha.length > 0 && senha.length <= 20) &&
       senha === confirmaSenha
       ) {
         return true;
@@ -77,7 +77,7 @@ export default function ModalCadastro() {
   }
 
   if (ModalCadastro) {
-    if(cadastrado == false){
+    if(cadastrado === false){
       return (
         <div>
           <Content>

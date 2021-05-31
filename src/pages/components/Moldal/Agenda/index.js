@@ -14,7 +14,12 @@ import {
   GridAgenda,
   ContentItemGrid,
   ItemGridNome,
-  ItemGridHorario
+  ItemGridHorario,
+  ItemGridAcoes,
+  ItemGridSituacao,
+  BodyGrid,
+  ButtonAceitar,
+  ButtonRecusar,
 } from "./style";
 import { motion } from "framer-motion";
 import Logo2 from "../../../assets/icons/Logo/Logo2";
@@ -26,19 +31,45 @@ export default function ModalAgenda() {
   const usuario = useSelector(DadosUsuario);
   const showModal = useSelector(ModalStateAgenda);
   const [agendamentos, setAgendamentos] = React.useState([]);
+  const [data, setData] = React.useState(new Date());
+
+  function handleChange(e) {
+    e.preventDefault();
+    setData(e.nativeEvent.target.value);
+  }
 
   React.useEffect(() => {
-    document.body.style.overflow = showModal ? "hidden" : "auto";
-
-    let scheduling = getAgendamentos();
+    let scheduling = getAgendamentos(data, usuario.token);
 
     scheduling.then((e) => {
       setAgendamentos(e.data.data);
     });
-  }, [showModal]);
+  }, [data, usuario.token]);
+
+  React.useEffect(() => {
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+
+    if (showModal) {
+      let scheduling = getAgendamentos(dataAtualFormatada(), usuario.token);
+      scheduling.then((e) => {
+        setAgendamentos(e.data.data);
+        console.log(e.data.data);
+      });
+    }
+  }, [showModal, usuario.token]);
 
   function showModalAgenda() {
     dispatch(setShowAgenda());
+  }
+
+  function dataAtualFormatada() {
+    let data = new Date(),
+      dia = data.getDate().toString(),
+      diaF = dia.length === 1 ? "0" + dia : dia,
+      mes = (data.getMonth() + 1).toString(),
+      mesF = mes.length === 1 ? "0" + mes : mes,
+      anoF = data.getFullYear();
+    return anoF + "-" + mesF + "-" + diaF;
   }
 
   const handleSubmit = async (event) => {
@@ -53,6 +84,10 @@ export default function ModalAgenda() {
     agendamento.then((e) => {
       if (e.data.success) {
         console.log("Agendado");
+        let scheduling = getAgendamentos(dataAtualFormatada(), usuario.token);
+        scheduling.then((e) => {
+          setAgendamentos(e.data.data);
+        });
       } else {
         console.log("Error");
       }
@@ -84,128 +119,257 @@ export default function ModalAgenda() {
                     <Logo2 />
                   </ContentLogo>
                   <div style={{ marginTop: "30px" }}>
-                    {usuario.role === "barber" ? (
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-around",
-                        }}
-                      >
+                    {usuario.role !== "barber" ? (
+                      <div>
                         <div
                           style={{
                             display: "flex",
-                            justifyContent: "center",
-                            width: "100%",
+                            justifyContent: "space-around",
                           }}
                         >
-                          <ButtonMenuAgenda>AGENDAR</ButtonMenuAgenda>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              width: "100%",
+                            }}
+                          >
+                            <ButtonMenuAgenda>
+                              HORARIOS MARCADOS
+                            </ButtonMenuAgenda>
+                          </div>
                         </div>
                         <div
                           style={{
                             display: "flex",
-                            justifyContent: "center",
-                            width: "100%",
+                            justifyContent: "space-around",
+                            marginTop: "20px",
                           }}
                         >
-                          <ButtonMenuAgenda>HORARIOS MARCADOS</ButtonMenuAgenda>
+                          <GridAgenda>
+                            <div style={{ width: "650px" }}>
+                              <ContentItemGrid>
+                                <ItemGridNome
+                                  style={{
+                                    textAlign: "center",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  NOME
+                                </ItemGridNome>
+                                <ItemGridHorario
+                                  style={{
+                                    textAlign: "center",
+                                    fontWeight: "bold",
+                                    borderRadius: "0px",
+                                  }}
+                                >
+                                  HORARIO
+                                </ItemGridHorario>
+                                <ItemGridAcoes
+                                  style={{
+                                    textAlign: "center",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  ACEITAR/RECUSAR
+                                </ItemGridAcoes>
+                              </ContentItemGrid>
+                            </div>
+                            <BodyGrid className="Grid">
+                              {agendamentos.map((item, index) => (
+                                <ContentItemGrid key={item.id + "" + index}>
+                                  <ItemGridNome
+                                    style={{
+                                      textAlign: "center",
+                                    }}
+                                  >
+                                    {item.user.name.split(" ")[0]}
+                                  </ItemGridNome>
+                                  <ItemGridHorario
+                                    style={{
+                                      textAlign: "center",
+                                    }}
+                                  >
+                                    {item.data} - {item.hora}
+                                  </ItemGridHorario>
+                                  <ItemGridAcoes
+                                    style={{
+                                      textAlign: "center",
+                                    }}
+                                  >
+                                    <ButtonAceitar>Aceitar</ButtonAceitar>
+                                    <ButtonRecusar>Recusar</ButtonRecusar>
+                                  </ItemGridAcoes>
+                                </ContentItemGrid>
+                              ))}
+                            </BodyGrid>
+                          </GridAgenda>
                         </div>
                       </div>
                     ) : (
-                      <div />
+                      <div>
+                        <div
+                          style={{
+                            display: "flex",
+                          }}
+                        >
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              width: "55%",
+                            }}
+                          >
+                            <ButtonMenuAgenda
+                              style={{
+                                borderTopRightRadius: "0px",
+                                borderBottomRightRadius: "0px",
+                              }}
+                            >
+                              AGENDAR
+                            </ButtonMenuAgenda>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              width: "100%",
+                            }}
+                          >
+                            <ButtonMenuAgenda
+                              style={{
+                                borderTopLeftRadius: "0px",
+                                borderBottomLeftRadius: "0px",
+                              }}
+                            >
+                              HORARIOS MARCADOS
+                            </ButtonMenuAgenda>
+                          </div>
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-around",
+                            marginTop: "20px",
+                          }}
+                        >
+                          <form
+                            onSubmit={handleSubmit}
+                            style={{
+                              width: "48%",
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                            }}
+                          >
+                            <div style={{ display: "flex" }}>
+                              <div style={{ width: "180px" }}>
+                                <span>Data: </span>
+                                <div>
+                                  <input
+                                    type="date"
+                                    key="data"
+                                    onChange={(e) => handleChange(e)}
+                                  />
+                                </div>
+                              </div>
+                              <div>
+                                <span>Horario:</span>
+                                <div>
+                                  <select key="cmbhoras">
+                                    <option value="09:00:00">09:00</option>
+                                    <option value="10:00:00">10:00</option>
+                                    <option value="11:00:00">11:00</option>
+                                    <option value="12:00:00">12:00</option>
+                                    <option value="13:00:00">13:00</option>
+                                    <option value="14:00:00">14:00</option>
+                                    <option value="15:00:00">15:00</option>
+                                    <option value="16:00:00">16:00</option>
+                                    <option value="17:00:00">17:00</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <span>Descrição:</span>
+                              <div>
+                                <textarea cols="30" rows="10" key="descricao" />
+                              </div>
+                            </div>
+                            <button type="submit">Concluir</button>
+                          </form>
+                          <GridAgenda>
+                            <div>
+                              <ContentItemGrid>
+                                <ItemGridNome
+                                  style={{
+                                    textAlign: "center",
+                                    fontWeight: "bold",
+                                    width: "110px",
+                                  }}
+                                >
+                                  NOME
+                                </ItemGridNome>
+                                <ItemGridHorario
+                                  style={{
+                                    textAlign: "center",
+                                    fontWeight: "bold",
+                                    borderRadius: "0px",
+                                    width: "240px",
+                                  }}
+                                >
+                                  HORARIO
+                                </ItemGridHorario>
+                                <ItemGridSituacao
+                                  style={{
+                                    textAlign: "center",
+                                    fontWeight: "bold",
+                                    borderTopRightRadius: "10px",
+                                    borderBottomRightRadius: "10px",
+                                  }}
+                                >
+                                  SITUAÇÃO
+                                </ItemGridSituacao>
+                              </ContentItemGrid>
+                            </div>
+                            <BodyGrid className="Grid">
+                              {agendamentos.map((item, index) => (
+                                <ContentItemGrid key={item.id + "" + index}>
+                                  <ItemGridNome
+                                    style={{
+                                      textAlign: "center",
+                                      width: "130px",
+                                    }}
+                                  >
+                                    {item.user.name.split(" ")[0]}
+                                  </ItemGridNome>
+                                  <ItemGridHorario
+                                    style={{
+                                      textAlign: "center",
+                                      borderRadius: "0px",
+                                      width: "220px",
+                                    }}
+                                  >
+                                    {item.data} - {item.hora}
+                                  </ItemGridHorario>
+                                  <ItemGridSituacao
+                                    style={{
+                                      textAlign: "center",
+                                      borderTopRightRadius: "10px",
+                                      borderBottomRightRadius: "10px",
+                                      width: "110px",
+                                    }}
+                                  >
+                                    {item.status}
+                                  </ItemGridSituacao>
+                                </ContentItemGrid>
+                              ))}
+                            </BodyGrid>
+                          </GridAgenda>
+                        </div>
+                      </div>
                     )}
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-around",
-                        marginTop: "20px",
-                      }}
-                    >
-                      <form
-                        onSubmit={handleSubmit}
-                        style={{
-                          width: "48%",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div style={{ display: "flex" }}>
-                          <div style={{ width: "180px" }}>
-                            <span>Data: </span>
-                            <div>
-                              <input type="date" key="data" />
-                            </div>
-                          </div>
-                          <div>
-                            <span>Horario:</span>
-                            <div>
-                              <select key="cmbhoras">
-                                <option value="09:00:00">09:00</option>
-                                <option value="10:00:00">10:00</option>
-                                <option value="11:00:00">11:00</option>
-                                <option value="12:00:00">12:00</option>
-                                <option value="13:00:00">13:00</option>
-                                <option value="14:00:00">14:00</option>
-                                <option value="15:00:00">15:00</option>
-                                <option value="16:00:00">16:00</option>
-                                <option value="17:00:00">17:00</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div>
-                          <span>Descrição:</span>
-                          <div>
-                            <textarea cols="30" rows="10" key="descricao" />
-                          </div>
-                        </div>
-                        <button type="submit">Concluir</button>
-                      </form>
-                      <GridAgenda>
-                        <ContentItemGrid>
-                          <ItemGridNome
-                            style={{
-                              width: "25%",
-                              textAlign: "center",
-                              fontWeight: "bold",
-                            }}
-                          >
-                            NOME
-                          </ItemGridNome>
-                          <ItemGridHorario
-                            style={{
-                              width: "65%",
-                              textAlign: "center",
-                              fontWeight: "bold",
-                              marginLeft: "10px",
-                            }}
-                          >
-                            HORARIO
-                          </ItemGridHorario>
-                        </ContentItemGrid>
-                        {agendamentos.map((item) => (
-                          <ContentItemGrid key={item.id}>
-                            <ItemGridNome
-                              style={{
-                                width: "25%",
-                                textAlign: "center",
-                              }}
-                            >
-                              {item.user.name.split(" ")[0]}
-                            </ItemGridNome>
-                            <ItemGridHorario
-                              style={{
-                                width: "65%",
-                                textAlign: "center",
-                                marginLeft: "10px",
-                              }}
-                            >
-                              {item.data} - {item.hora}
-                            </ItemGridHorario>
-                          </ContentItemGrid>
-                        ))}
-                      </GridAgenda>
-                    </div>
                   </div>
                 </ContentModal>
               </div>

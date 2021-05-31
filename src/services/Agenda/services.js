@@ -22,10 +22,15 @@ export async function Agendar(date_time, description, user_id, token) {
   }
 }
 
-export async function getAgendamentos() {
+export async function getAgendamentos(date, token) {
   try {
     const agentamentos = await axios.get(
-      "https://api-corta-e-tchau.herokuapp.com/scheduling"
+      "https://api-corta-e-tchau.herokuapp.com/scheduling/filter?data=" + date,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return agentamentos;
   } catch (error) {

@@ -28,6 +28,7 @@ export const X1 = styled.div`
   position: absolute;
   background-color: white;
 `;
+
 export const X2 = styled.div`
   width: 35px;
   height: 7px;
@@ -108,8 +109,7 @@ export const ContentLogo = styled.div`
 `;
 
 export const GridAgenda = styled.div`
-  width: 370px;
-  height: 250px;
+  width: 670px;
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -117,25 +117,76 @@ export const GridAgenda = styled.div`
 `;
 
 export const ContentItemGrid = styled.span`
-  width: 380px;
+  width: 100%;
   display: flex;
   margin-top: 2px;
 `;
-export const ItemGridNome = styled.span`
-  width: 48%;
-  color: black;
-  background-color: white;
-  border-radius: 10px;
+
+export const BodyGrid = styled.span`
+  height: 250px;
+  overflow-y: auto;
 `;
-export const ItemGridHorario = styled.span`
-  width: 48%;
+
+export const ItemGridNome = styled.span`
+  width: 190px;
   color: black;
   background-color: white;
   border-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  :hover {
+    cursor: default;
+  }
+`;
+
+export const ItemGridHorario = styled.span`
+  width: 250px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  transition: 300ms;
+  text-align: center;
+  border-radius: 0px;
+
+  :hover {
+    cursor: default;
+  }
+`;
+
+export const ItemGridSituacao = styled.span`
+  width: 110px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  transition: 300ms;
+  text-align: center;
+  border-radius: 0px;
+
+  :hover {
+    cursor: default;
+  }
+`;
+
+export const ItemGridAcoes = styled.span`
+  width: 200px;
+  height: 25px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  transition: 300ms;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+
+  :hover {
+    cursor: default;
+  }
 `;
 
 export const ButtonMenuAgenda = styled.button`
-  width: 95%;
+  width: 100%;
   height: 40px;
   border-radius: 15px;
   outline: none;
@@ -147,15 +198,58 @@ export const ButtonMenuAgenda = styled.button`
   color: black;
 
   :hover {
-    box-shadow: 0px 0px 15px 0px #10002b;
-    width: 99%;
-    transition: 500ms;
+    cursor: default;
+  }
+`;
+
+export const ButtonAceitar = styled.button`
+  width: 60px;
+  height: 20px;
+  border-radius: 15px;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: transform 0.5s ease-in-out;
+  transition: 500ms;
+  color: black;
+
+  :hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 3px 0px #10002b;
   }
 
   :active {
-    box-shadow: 0px 0px 0px 0px #10002b;
-    transition: transform 0.5s ease-in-out;
-    width: 95%;
-    transition: 500ms;
+    background-color: #00000096;
+    box-shadow: none;
+  }
+`;
+
+export const ButtonRecusar = styled.button`
+  width: 60px;
+  height: 20px;
+  border-radius: 15px;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: transform 0.5s ease-in-out;
+  transition: 500ms;
+  color: black;
+
+  :hover {
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    box-shadow: 0px 0px 3px 0px #10002b;
+  }
+
+  :active {
+    cursor: pointer;
+    background-color: #ff000073;
+    color: black;
+    box-shadow: none;
   }
 `;

@@ -62,7 +62,7 @@ export default function Body({ setOpen }) {
           {Cortes.map((item) => (
             <AnimatedDiv key={item.id}>
               <ContentItem>
-                <ImgItem src={item.foto} />
+                <ImgItem src={item.foto}/>
                 <DetalhetItem>
                   <div>{item.item}</div>
                 </DetalhetItem>
@@ -101,7 +101,7 @@ const Cortes = [
   {
     id: 4,
     tipo: "Barba",
-    item: "O BARBA",
+    item: "BARBA DINHO",
     foto: "https://cdn.discordapp.com/attachments/505795445562540052/847639265646870540/unknown.png",
     preco: 10.0,
   },

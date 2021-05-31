@@ -75,6 +75,14 @@ export const ImgItem = styled.img`
   width: 200px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  filter: grayscale(1);
+  transition: 300ms;
+
+  :hover{
+    filter: grayscale(0);
+    transition: 300ms;
+  }
+
 `;
 
 export const ButtonAgendar = styled.button`

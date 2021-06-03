@@ -31,7 +31,7 @@ export default function ModalAgenda() {
   const usuario = useSelector(DadosUsuario);
   const showModal = useSelector(ModalStateAgenda);
   const [agendamentos, setAgendamentos] = React.useState([]);
-  const [data, setData] = React.useState(new Date());
+  const [data, setData] = React.useState(dataAtualFormatada());
 
   function handleChange(e) {
     e.preventDefault();
@@ -39,11 +39,13 @@ export default function ModalAgenda() {
   }
 
   React.useEffect(() => {
-    let scheduling = getAgendamentos(data, usuario.token);
+    if (usuario.token !== null) {
+      let scheduling = getAgendamentos(data, usuario.token);
 
-    scheduling.then((e) => {
-      setAgendamentos(e.data.data);
-    });
+      scheduling.then((e) => {
+        setAgendamentos(e.data.data);
+      });
+    }
   }, [data, usuario.token]);
 
   React.useEffect(() => {
@@ -53,7 +55,6 @@ export default function ModalAgenda() {
       let scheduling = getAgendamentos(dataAtualFormatada(), usuario.token);
       scheduling.then((e) => {
         setAgendamentos(e.data.data);
-        console.log(e.data.data);
       });
     }
   }, [showModal, usuario.token]);

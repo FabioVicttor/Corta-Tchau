@@ -3,6 +3,7 @@ import { ContentHome } from "./style";
 import Body from "../components/Body/index";
 import Header from "../components/Header/index";
 import Footer from "../components/Footer/index";
+import PopUpNotificacao from "../components/PopUp/index";
 
 import {
   ModalState,
@@ -19,7 +20,6 @@ export default function Home({ open, setOpen }) {
   const ModalCadastro = useSelector(ModalStateCadastro);
   const ModalAgenda = useSelector(ModalStateAgenda);
   const ModalCorte = useSelector(ModalAgendaCorte);
-
   return (
     <ContentHome
       style={{
@@ -33,6 +33,7 @@ export default function Home({ open, setOpen }) {
             : "none",
       }}
     >
+      <PopUpNotificacao />
       <Header />
       <Body open={open} setOpen={setOpen} />
       <Footer />

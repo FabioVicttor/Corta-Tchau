@@ -59,10 +59,14 @@ export default function Menu({ open, setOpen }) {
           <Agenda />
           <h2>Agendamento</h2>
         </ItemMenu>
-        <ItemMenu open={open} onClick={showModalContatos}>
-          <Contatos />
-          <h2>Contatos</h2>
-        </ItemMenu>
+        {usuario.role === "barber" ? (
+          <ItemMenu open={open} onClick={showModalContatos}>
+            <Contatos />
+            <h2>Contatos</h2>
+          </ItemMenu>
+        ) : (
+          <div />
+        )}
       </ListaMenu>
     </LeftMenu>
   );

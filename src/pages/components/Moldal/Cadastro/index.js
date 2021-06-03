@@ -14,7 +14,7 @@ import {
   X2,
   ContentLogo,
   ItemModalButton,
-  Item
+  Item,
 } from "./style";
 import { motion } from "framer-motion";
 import Logo2 from "../../../assets/icons/Logo/Logo2";
@@ -35,7 +35,7 @@ export default function ModalCadastro() {
     dispatch(setShowCadastro());
   }
 
-  function showModalLogin(){
+  function showModalLogin() {
     dispatch(setShowCadastro());
     dispatch(setShow());
   }
@@ -48,36 +48,37 @@ export default function ModalCadastro() {
     const senha = event.target[2].value;
     const senhaConfirmada = event.target[3].value;
 
-    if(validaForm(nome, telefone, senha, senhaConfirmada)) {
+    if (validaForm(nome, telefone, senha, senhaConfirmada)) {
       const cadastro = Cadastrar(telefone, nome, senha);
 
       setCadastroValido(true);
-       cadastro.then((response, reject) => {
-        if(response){
+      cadastro.then((response, reject) => {
+        if (response) {
           setCadastrado(true);
-        }
-        else
-        setCadastrado(false);
+        } else setCadastrado(false);
       });
     }
   };
 
   const validaForm = (nome, telefone, senha, confirmaSenha) => {
-    if((nome.length > 0 && nome.length <= 30) &&
-      telefone.length === 11 && (senha.length > 0 && senha.length <= 20) &&
+    if (
+      nome.length > 0 &&
+      nome.length <= 30 &&
+      telefone.length === 11 &&
+      senha.length > 0 &&
+      senha.length <= 20 &&
       senha === confirmaSenha
-      ) {
-        return true;
-    }
-    else {
+    ) {
+      return true;
+    } else {
       setCadastroValido(false);
-      console.log('form inválido');
+      console.log("form inválido");
       return false;
     }
-  }
+  };
 
   if (ModalCadastro) {
-    if(cadastrado === false){
+    if (cadastrado === false) {
       return (
         <div>
           <Content>
@@ -136,18 +137,20 @@ export default function ModalCadastro() {
                           maxLength="20"
                         />
                       </ItemModal>
-                      {cadastroValido ? 
+                      {cadastroValido ? (
                         <ItemModalButton>
                           <Button type="submit">CADASTRAR</Button>
                           <Item onClick={showModalLogin}>Efetuar Login</Item>
-                        </ItemModalButton> : 
+                        </ItemModalButton>
+                      ) : (
                         <ItemModalButton>
                           *Dados inválidos.
-                          <Button style={{marginTop: 15}} type="submit">CADASTRAR</Button>
+                          <Button style={{ marginTop: 15 }} type="submit">
+                            CADASTRAR
+                          </Button>
                           <Item onClick={showModalLogin}>Efetuar Login</Item>
                         </ItemModalButton>
-                        }
-                      
+                      )}
                     </div>
                   </ContentModal>
                 </form>
@@ -156,8 +159,7 @@ export default function ModalCadastro() {
           </Content>
         </div>
       );
-    }
-    else {
+    } else {
       return (
         <div>
           <Content>
@@ -197,8 +199,7 @@ export default function ModalCadastro() {
         </div>
       );
     }
-  }
-  else {
+  } else {
     return null;
   }
 }

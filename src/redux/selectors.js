@@ -32,5 +32,6 @@ export const ModalState = (store) => store.ModalLogin.show;
 export const ModalStateContatos = (store) => store.ModalContatos.showContatos;
 export const ModalStateCadastro = (store) => store.ModalCadastro.showCadastro;
 export const ModalStateAgenda = (store) => store.ModalAgenda.showAgenda;
+export const ModalStatePopUp = (store) => store.ModalPopUp.showPopUp;
 export const ModalAgendaCorte = (store) => store.ModalAgendaCorte.corte;
 export const DadosUsuario = (store) => store.Login;

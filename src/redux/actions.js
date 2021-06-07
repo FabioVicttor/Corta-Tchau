@@ -47,8 +47,12 @@ export const setShowCadastro = () => ({
   type: SHOW_CADASTRO,
 });
 
-export const setShowPopUp = () => ({
+export const setShowPopUp = (tipo, msg) => ({
   type: SHOW_POPUP,
+  payload: {
+    tipo,
+    msg,
+  },
 });
 
 export const setCorte = () => ({

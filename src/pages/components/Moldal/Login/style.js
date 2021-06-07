@@ -11,6 +11,7 @@ export const Content = styled.div`
 `;
 
 export const ContentX = styled.div`
+  z-index: 1001;
   float: right;
   display: "flex";
   :hover {

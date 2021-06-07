@@ -1,14 +1,27 @@
 import styled from "styled-components";
 
-export const ContentPopUp = styled.div`
-  z-index: 9999999;
-  background-color: red;
-  width: 350px;
+export const Content = styled.div`
+  z-index: 1000;
+  width: 100%;
   height: 95px;
-  margin-top: 62px;
+  margin-top: 20px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  @media (min-width: 1025px) {
+    margin-left: -30px;
+  }
+`;
+export const ContentPopUp = styled.div`
+  background-color: ${({ cor }) => cor};
+  box-shadow: 0px 4px 13px 0px black;
+  width: 350px;
   text-align: center;
   position: fixed;
   border-radius: 25px;
+  @media (min-width: 1025px) {
+    margin-left: 60px;
+  }
 `;
 
 export const Mensagem = styled.div`

@@ -1,7 +1,15 @@
 import React from "react";
-import { ModalState, DadosUsuario } from "../../../../redux/selectors";
+import {
+  ModalState,
+  DadosUsuario,
+} from "../../../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
-import { setShow, setShowCadastro, setLogin } from "../../../../redux/actions";
+import {
+  setShow,
+  setShowCadastro,
+  setLogin,
+  setShowPopUp,
+} from "../../../../redux/actions";
 import {
   Content,
   Modal,
@@ -29,6 +37,9 @@ export default function ModalLogin() {
     document.body.style.overflow = showModal ? "hidden" : "auto";
   }, [showModal]);
 
+  function notificacao(tipo, msg) {
+    dispatch(setShowPopUp(tipo, msg));
+  }
   function showModalLogin() {
     dispatch(setShow());
   }
@@ -43,11 +54,15 @@ export default function ModalLogin() {
     let user = Loginho(event.target[0].value, event.target[1].value);
 
     user.then((e) => {
-      if (e !== "error") {
+      if (e !== null) {
         dispatch(
           setLogin(e.user.phone, e.user.name, e.user.role, e.user.id, e.token)
         );
-        // dispatch(setShow());
+      } else {
+        notificacao("red", "Login Inválido.");
+        setTimeout(() => {
+          notificacao(null, null);
+        }, 3000);
       }
     });
   };

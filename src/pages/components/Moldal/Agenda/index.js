@@ -1,7 +1,7 @@
 import React from "react";
 import { ModalStateAgenda, DadosUsuario } from "../../../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowAgenda } from "../../../../redux/actions";
+import { setShowAgenda, setShowPopUp } from "../../../../redux/actions";
 import {
   Content,
   Modal,
@@ -73,6 +73,10 @@ export default function ModalAgenda() {
     return anoF + "-" + mesF + "-" + diaF;
   }
 
+  function notificacao(tipo, msg) {
+    dispatch(setShowPopUp(tipo, msg));
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const date_time = event.target[0].value + " " + event.target[1].value;
@@ -84,13 +88,19 @@ export default function ModalAgenda() {
 
     agendamento.then((e) => {
       if (e.data.success) {
-        console.log("Agendado");
+        notificacao("green", "Agendado.");
+        setTimeout(() => {
+          notificacao(null, null);
+        }, 3000);
         let scheduling = getAgendamentos(dataAtualFormatada(), usuario.token);
         scheduling.then((e) => {
           setAgendamentos(e.data.data);
         });
       } else {
-        console.log("Error");
+        notificacao("red", e.data.error[0].errorMessage);
+        setTimeout(() => {
+          notificacao(null, null);
+        }, 3000);
       }
     });
   };
@@ -120,7 +130,7 @@ export default function ModalAgenda() {
                     <Logo2 />
                   </ContentLogo>
                   <div style={{ marginTop: "30px" }}>
-                    {usuario.role !== "barber" ? (
+                    {usuario.role === "barber" ? (
                       <div>
                         <div
                           style={{

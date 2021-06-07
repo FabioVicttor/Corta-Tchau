@@ -6,6 +6,7 @@ import LoginModal from "./components/Moldal/Login/index";
 import ContatosModal from "./components/Moldal/Contatos/index";
 import ModalAgenda from "./components/Moldal/Agenda/index";
 import ModalCadastro from "./components/Moldal/Cadastro/index";
+import PopUpNotificacao from "./components/PopUp/index";
 import { useOnClickOutside } from "./hooks";
 
 export default function Index() {
@@ -21,6 +22,8 @@ export default function Index() {
           <Burger open={open} setOpen={setOpen}></Burger>
           <Menu open={open} setOpen={setOpen}></Menu>
         </div>
+
+        <PopUpNotificacao />
         <LoginModal />
         <ModalAgenda />
         <ContatosModal />

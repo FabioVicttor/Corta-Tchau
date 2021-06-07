@@ -1,31 +1,33 @@
 import React from "react";
 
 import { ModalStatePopUp } from "../../../redux/selectors";
-import { useSelector, useDispatch } from "react-redux";
-import { setShowPopUp } from "../../../redux/actions";
-import { ContentPopUp, Mensagem, ContentX, X1, X2 } from "./style";
+import { useSelector /*useDispatch*/ } from "react-redux";
+// import { setShowPopUp } from "../../../redux/actions";
+import { Content, ContentPopUp, Mensagem /*ContentX, X1, X2*/ } from "./style";
 // import { motion } from "framer-motion";
 // import AnimatedDiv from "../../Animated/AnimatedDiv";
 
 export default function PopUpNotificacao() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const showPopUp = useSelector(ModalStatePopUp);
 
-  function notificacao() {
-    dispatch(setShowPopUp());
-  }
+  // function notificacao() {
+  //   dispatch(setShowPopUp(null, null));
+  // }
 
-  if (!showPopUp) {
+  if (showPopUp.showPopUp) {
     return (
-      <ContentPopUp>
-        <ContentX onClick={notificacao}>
-          <X1></X1>
-          <X2></X2>
-        </ContentX>
-        <Mensagem>
-          <span>MENSAGEM</span>
-        </Mensagem>
-      </ContentPopUp>
+      <Content>
+        <ContentPopUp cor={showPopUp.tipo}>
+          {/* <ContentX onClick={notificacao}>
+            <X1></X1>
+            <X2></X2>
+          </ContentX> */}
+          <Mensagem>
+            <span key="msg">{showPopUp.msg}</span>
+          </Mensagem>
+        </ContentPopUp>
+      </Content>
     );
   } else {
     return null;

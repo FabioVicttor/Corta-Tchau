@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Content = styled.div`
   z-index: 110;
@@ -214,12 +214,17 @@ export const ButtonAceitar = styled.button`
   transition: 500ms;
   color: black;
 
-  :hover {
-    cursor: pointer;
-    background-color: black;
-    color: white;
-    box-shadow: 0px 0px 3px 0px #10002b;
-  }
+  ${({ situacao }) =>
+    situacao !== "ACEITO"
+      ? css`
+          :hover {
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            box-shadow: 0px 0px 3px 0px #10002b;
+          }
+        `
+      : "background-color: green;"};
 
   :active {
     background-color: #00000096;
@@ -239,12 +244,17 @@ export const ButtonRecusar = styled.button`
   transition: 500ms;
   color: black;
 
-  :hover {
-    cursor: pointer;
-    background-color: red;
-    color: white;
-    box-shadow: 0px 0px 3px 0px #10002b;
-  }
+  ${({ situacao }) =>
+    situacao !== "RECUSADO"
+      ? css`
+          :hover {
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            box-shadow: 0px 0px 3px 0px #10002b;
+          }
+        `
+      : "background-color: red;"};
 
   :active {
     cursor: pointer;

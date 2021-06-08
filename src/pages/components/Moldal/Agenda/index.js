@@ -82,17 +82,22 @@ export default function ModalAgenda() {
   }
 
   function updateSituacao(situacao, item) {
-    console.log(item)
-    let update = alteraSituacao(situacao, item, usuario.token);
-
+    let update = alteraSituacao(
+      situacao,
+      data + " " + item.hora + ":00",
+      item.description,
+      item.user.id,
+      item.id,
+      usuario.token
+    );
     update.then((e) => {
-      console.log(e);
       if (e.data.success) {
         notificacao(situacao === "ACEITO" ? "green" : "red", situacao);
         setTimeout(() => {
           notificacao(null, null);
         }, 3000);
-        let scheduling = getAgendamentos(dataAtualFormatada(), usuario.token);
+
+        let scheduling = getAgendamentos(data, usuario.token);
         scheduling.then((e) => {
           setAgendamentos(e.data.data);
         });
@@ -107,7 +112,8 @@ export default function ModalAgenda() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const date_time = event.target[0].value + " " + event.target[1].value;
+    const date_time =
+      event.target[0].value + " " + event.target[1].value + ":00";
     const description = event.target[2].value;
     const user_id = usuario.id;
     const token = usuario.token;
@@ -255,6 +261,7 @@ export default function ModalAgenda() {
                                     }}
                                   >
                                     <ButtonAceitar
+                                      situacao={item.situacao}
                                       onClick={() => {
                                         updateSituacao("ACEITO", item);
                                       }}
@@ -262,6 +269,7 @@ export default function ModalAgenda() {
                                       Aceitar
                                     </ButtonAceitar>
                                     <ButtonRecusar
+                                      situacao={item.situacao}
                                       onClick={() => {
                                         updateSituacao("RECUSADO", item);
                                       }}
@@ -346,15 +354,15 @@ export default function ModalAgenda() {
                                 <span>Horario:</span>
                                 <div>
                                   <select key="cmbhoras">
-                                    <option value="09:00:00">09:00</option>
-                                    <option value="10:00:00">10:00</option>
-                                    <option value="11:00:00">11:00</option>
-                                    <option value="12:00:00">12:00</option>
-                                    <option value="13:00:00">13:00</option>
-                                    <option value="14:00:00">14:00</option>
-                                    <option value="15:00:00">15:00</option>
-                                    <option value="16:00:00">16:00</option>
-                                    <option value="17:00:00">17:00</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
                                   </select>
                                 </div>
                               </div>

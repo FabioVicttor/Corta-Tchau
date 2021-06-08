@@ -38,16 +38,23 @@ export async function getAgendamentos(date, token) {
   }
 }
 
-export async function alteraSituacao(situacao, item, token) {
+export async function alteraSituacao(
+  situacao,
+  date_time,
+  description,
+  userId,
+  id,
+  token
+) {
   try {
     const agentamentos = await axios.put(
       "https://api-corta-e-tchau.herokuapp.com/scheduling/",
       {
-        date_time: item.data + " " + item.hora,
-        description: item.description,
-        user_id: item.user.id,
+        date_time: date_time,
+        description: description,
+        user_id: userId,
         status: situacao,
-        id: item.id,
+        id: id,
       },
       {
         headers: {

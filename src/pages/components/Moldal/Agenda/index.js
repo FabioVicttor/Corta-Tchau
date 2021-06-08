@@ -24,7 +24,11 @@ import {
 import { motion } from "framer-motion";
 import Logo2 from "../../../assets/icons/Logo/Logo2";
 
-import { Agendar, getAgendamentos } from "../../../../services/Agenda/services";
+import {
+  Agendar,
+  getAgendamentos,
+  alteraSituacao,
+} from "../../../../services/Agenda/services";
 
 export default function ModalAgenda() {
   const dispatch = useDispatch();
@@ -75,6 +79,30 @@ export default function ModalAgenda() {
 
   function notificacao(tipo, msg) {
     dispatch(setShowPopUp(tipo, msg));
+  }
+
+  function updateSituacao(situacao, item) {
+    console.log(item)
+    let update = alteraSituacao(situacao, item, usuario.token);
+
+    update.then((e) => {
+      console.log(e);
+      if (e.data.success) {
+        notificacao(situacao === "ACEITO" ? "green" : "red", situacao);
+        setTimeout(() => {
+          notificacao(null, null);
+        }, 3000);
+        let scheduling = getAgendamentos(dataAtualFormatada(), usuario.token);
+        scheduling.then((e) => {
+          setAgendamentos(e.data.data);
+        });
+      } else {
+        notificacao("red", e.data.error[0].errorMessage);
+        setTimeout(() => {
+          notificacao(null, null);
+        }, 3000);
+      }
+    });
   }
 
   const handleSubmit = async (event) => {
@@ -153,6 +181,23 @@ export default function ModalAgenda() {
                         <div
                           style={{
                             display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginTop: "10px",
+                          }}
+                        >
+                          <span style={{ marginRight: "20px" }}>Data: </span>
+                          <div>
+                            <input
+                              type="date"
+                              key="data"
+                              onChange={(e) => handleChange(e)}
+                            />
+                          </div>
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
                             justifyContent: "space-around",
                             marginTop: "20px",
                           }}
@@ -209,8 +254,20 @@ export default function ModalAgenda() {
                                       textAlign: "center",
                                     }}
                                   >
-                                    <ButtonAceitar>Aceitar</ButtonAceitar>
-                                    <ButtonRecusar>Recusar</ButtonRecusar>
+                                    <ButtonAceitar
+                                      onClick={() => {
+                                        updateSituacao("ACEITO", item);
+                                      }}
+                                    >
+                                      Aceitar
+                                    </ButtonAceitar>
+                                    <ButtonRecusar
+                                      onClick={() => {
+                                        updateSituacao("RECUSADO", item);
+                                      }}
+                                    >
+                                      Recusar
+                                    </ButtonRecusar>
                                   </ItemGridAcoes>
                                 </ContentItemGrid>
                               ))}
@@ -345,37 +402,41 @@ export default function ModalAgenda() {
                               </ContentItemGrid>
                             </div>
                             <BodyGrid className="Grid">
-                              {agendamentos.map((item, index) => (
-                                <ContentItemGrid key={item.id + "" + index}>
-                                  <ItemGridNome
-                                    style={{
-                                      textAlign: "center",
-                                      width: "130px",
-                                    }}
-                                  >
-                                    {item.user.name.split(" ")[0]}
-                                  </ItemGridNome>
-                                  <ItemGridHorario
-                                    style={{
-                                      textAlign: "center",
-                                      borderRadius: "0px",
-                                      width: "220px",
-                                    }}
-                                  >
-                                    {item.data} - {item.hora}
-                                  </ItemGridHorario>
-                                  <ItemGridSituacao
-                                    style={{
-                                      textAlign: "center",
-                                      borderTopRightRadius: "10px",
-                                      borderBottomRightRadius: "10px",
-                                      width: "110px",
-                                    }}
-                                  >
-                                    {item.status}
-                                  </ItemGridSituacao>
-                                </ContentItemGrid>
-                              ))}
+                              {agendamentos.map((item, index) =>
+                                item.user.id === usuario.id ? (
+                                  <ContentItemGrid key={item.id + "" + index}>
+                                    <ItemGridNome
+                                      style={{
+                                        textAlign: "center",
+                                        width: "130px",
+                                      }}
+                                    >
+                                      {item.user.name.split(" ")[0]}
+                                    </ItemGridNome>
+                                    <ItemGridHorario
+                                      style={{
+                                        textAlign: "center",
+                                        borderRadius: "0px",
+                                        width: "220px",
+                                      }}
+                                    >
+                                      {item.data} - {item.hora}
+                                    </ItemGridHorario>
+                                    <ItemGridSituacao
+                                      style={{
+                                        textAlign: "center",
+                                        borderTopRightRadius: "10px",
+                                        borderBottomRightRadius: "10px",
+                                        width: "110px",
+                                      }}
+                                    >
+                                      {item.status}
+                                    </ItemGridSituacao>
+                                  </ContentItemGrid>
+                                ) : (
+                                  <div />
+                                )
+                              )}
                             </BodyGrid>
                           </GridAgenda>
                         </div>

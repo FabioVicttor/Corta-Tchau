@@ -20,6 +20,7 @@ import {
   BodyGrid,
   ButtonAceitar,
   ButtonRecusar,
+  ItemGridDesc,
 } from "./style";
 import { motion } from "framer-motion";
 import Logo2 from "../../../assets/icons/Logo/Logo2";
@@ -209,7 +210,7 @@ export default function ModalAgenda() {
                           }}
                         >
                           <GridAgenda>
-                            <div style={{ width: "650px" }}>
+                            <div style={{ width: "640px" }}>
                               <ContentItemGrid>
                                 <ItemGridNome
                                   style={{
@@ -240,7 +241,8 @@ export default function ModalAgenda() {
                             </div>
                             <BodyGrid className="Grid">
                               {agendamentos.map((item, index) => (
-                                <ContentItemGrid key={item.id + "" + index}>
+                                <ContentItemGrid key={item.id + "" + index}  className="tooltip">
+                                   <span className="tooltiptext">{item.description}</span>
                                   <ItemGridNome
                                     style={{
                                       textAlign: "center",
@@ -260,22 +262,42 @@ export default function ModalAgenda() {
                                       textAlign: "center",
                                     }}
                                   >
-                                    <ButtonAceitar
-                                      situacao={item.situacao}
-                                      onClick={() => {
-                                        updateSituacao("ACEITO", item);
-                                      }}
-                                    >
-                                      Aceitar
-                                    </ButtonAceitar>
-                                    <ButtonRecusar
-                                      situacao={item.situacao}
-                                      onClick={() => {
-                                        updateSituacao("RECUSADO", item);
-                                      }}
-                                    >
-                                      Recusar
-                                    </ButtonRecusar>
+                                    {item.status === "ACEITO" ? (
+                                      <ButtonAceitar
+                                        style={{
+                                          backgroundColor: "green",
+                                          color: "white",
+                                        }}
+                                      >
+                                        Aceito
+                                      </ButtonAceitar>
+                                    ) : (
+                                      <ButtonAceitar
+                                        onClick={() => {
+                                          updateSituacao("ACEITO", item);
+                                        }}
+                                      >
+                                        Aceitar
+                                      </ButtonAceitar>
+                                    )}
+                                    {item.status === "RECUSADO" ? (
+                                      <ButtonRecusar
+                                        style={{
+                                          backgroundColor: "red",
+                                          color: "white",
+                                        }}
+                                      >
+                                        Recusado
+                                      </ButtonRecusar>
+                                    ) : (
+                                      <ButtonRecusar
+                                        onClick={() => {
+                                          updateSituacao("RECUSADO", item);
+                                        }}
+                                      >
+                                        Recusar
+                                      </ButtonRecusar>
+                                    )}
                                   </ItemGridAcoes>
                                 </ContentItemGrid>
                               ))}

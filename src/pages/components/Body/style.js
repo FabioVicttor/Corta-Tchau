@@ -78,11 +78,10 @@ export const ImgItem = styled.img`
   filter: grayscale(1);
   transition: 300ms;
 
-  :hover{
+  :hover {
     filter: grayscale(0);
     transition: 300ms;
   }
-
 `;
 
 export const ButtonAgendar = styled.button`

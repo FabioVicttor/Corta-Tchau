@@ -105,6 +105,7 @@ export const Item = styled.div`
 export const ContentLogo = styled.div`
   /* margin-left: 100px; */
   display: flex;
+  width: 100%;
   justify-content: center;
 `;
 
@@ -123,8 +124,8 @@ export const ContentItemGrid = styled.span`
 `;
 
 export const BodyGrid = styled.span`
-  height: 250px;
-  overflow-y: auto;
+  height: 290px;
+  /* overflow-y: auto; */
 `;
 
 export const ItemGridNome = styled.span`
@@ -141,6 +142,19 @@ export const ItemGridNome = styled.span`
 
 export const ItemGridHorario = styled.span`
   width: 250px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  transition: 300ms;
+  text-align: center;
+  border-radius: 0px;
+
+  :hover {
+    cursor: default;
+  }
+`;
+export const ItemGridDesc = styled.span`
+  width: 90px;
   color: black;
   background-color: white;
   border-radius: 10px;
@@ -214,17 +228,12 @@ export const ButtonAceitar = styled.button`
   transition: 500ms;
   color: black;
 
-  ${({ situacao }) =>
-    situacao !== "ACEITO"
-      ? css`
-          :hover {
-            cursor: pointer;
-            background-color: black;
-            color: white;
-            box-shadow: 0px 0px 3px 0px #10002b;
-          }
-        `
-      : "background-color: green;"};
+  :hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 3px 0px #10002b;
+  }
 
   :active {
     background-color: #00000096;
@@ -233,7 +242,7 @@ export const ButtonAceitar = styled.button`
 `;
 
 export const ButtonRecusar = styled.button`
-  width: 60px;
+  width: 72px;
   height: 20px;
   border-radius: 15px;
   outline: none;
@@ -244,17 +253,12 @@ export const ButtonRecusar = styled.button`
   transition: 500ms;
   color: black;
 
-  ${({ situacao }) =>
-    situacao !== "RECUSADO"
-      ? css`
-          :hover {
-            cursor: pointer;
-            background-color: red;
-            color: white;
-            box-shadow: 0px 0px 3px 0px #10002b;
-          }
-        `
-      : "background-color: red;"};
+  :hover {
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    box-shadow: 0px 0px 3px 0px #10002b;
+  }
 
   :active {
     cursor: pointer;

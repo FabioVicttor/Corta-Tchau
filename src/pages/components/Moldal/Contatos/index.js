@@ -63,7 +63,7 @@ export default function ModalContatos() {
                       <ItemModal>
                         <div>
                           <div>
-                            <h1>Bahia</h1>
+                            <h1>Fábio</h1>
                           </div>
                           <ContentDetalheItemModal>
                             <AnimatedDiv>
@@ -84,7 +84,7 @@ export default function ModalContatos() {
                       <ItemModal>
                         <div>
                           <div>
-                            <h1>Evaldo</h1>
+                            <h1>Evandro</h1>
                           </div>
                           <ContentDetalheItemModal>
                             <AnimatedDiv>
@@ -105,7 +105,7 @@ export default function ModalContatos() {
                       <ItemModal>
                         <div>
                           <div>
-                            <h1>Simonoia</h1>
+                            <h1>Simonette</h1>
                           </div>
                           <ContentDetalheItemModal>
                             <AnimatedDiv>
@@ -126,7 +126,7 @@ export default function ModalContatos() {
                       <ItemModal>
                         <div>
                           <div>
-                            <h1>Mortadelinha</h1>
+                            <h1>Felipe</h1>
                           </div>
                           <ContentDetalheItemModal>
                             <AnimatedDiv>

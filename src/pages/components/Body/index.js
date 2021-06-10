@@ -34,11 +34,6 @@ export default function Body({ setOpen }) {
   }
   /*Controla Modal de Agenda*/
 
-  // function agendar(item) {
-  //   showModalAgenda();
-  //   setCorte(item);
-  // }
-
   return (
     <ContentBody style={{ width: "100%" }}>
       <ContentBodyAgendar>
@@ -56,7 +51,7 @@ export default function Body({ setOpen }) {
       </ContentBodyAgendar>
       <ContentBodyCortes>
         <Title>
-          <h1>HIGHLIGHTS</h1>
+          <h2>DESTAQUES</h2>
         </Title>
         <Content>
           {Cortes.map((item) => (
@@ -79,10 +74,10 @@ export default function Body({ setOpen }) {
 const Cortes = [
   {
     id: 1,
-    tipo: "Curto",
-    item: "TOMA CHEUBI",
-    foto: "https://cdn.discordapp.com/attachments/505795445562540052/847635704137777152/EbZcR74WkAIRrMf.png",
-    preco: 10.5,
+    tipo: "Barba",
+    item: "CÊ-GOSTÔ",
+    foto: "https://cdn.discordapp.com/attachments/505795445562540052/847639865637732362/unknown.png",
+    preco: 10.0,
   },
   {
     id: 2,
@@ -93,10 +88,10 @@ const Cortes = [
   },
   {
     id: 3,
-    tipo: "Barba",
-    item: "CÊ-GOSTÔ",
-    foto: "https://cdn.discordapp.com/attachments/505795445562540052/847639865637732362/unknown.png",
-    preco: 10.0,
+    tipo: "Curto",
+    item: "TOMA CHEUBI",
+    foto: "https://cdn.discordapp.com/attachments/505795445562540052/847635704137777152/EbZcR74WkAIRrMf.png",
+    preco: 10.5,
   },
   {
     id: 4,
@@ -119,7 +114,6 @@ const Cortes = [
     foto: "https://cdn.discordapp.com/attachments/505795445562540052/847637961918906398/unknown.png",
     preco: 10.0,
   },
-
   {
     id: 7,
     tipo: "Curto",

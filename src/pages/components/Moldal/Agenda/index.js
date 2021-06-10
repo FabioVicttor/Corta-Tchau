@@ -242,7 +242,7 @@ export default function ModalAgenda() {
                             <BodyGrid className="Grid">
                               {agendamentos.map((item, index) => (
                                 <ContentItemGrid key={item.id + "" + index}  className="tooltip">
-                                   <span className="tooltiptext">{item.description}</span>
+                                   <span className="tooltiptext">{item.description ? item.description : '...'}</span>
                                   <ItemGridNome
                                     style={{
                                       textAlign: "center",

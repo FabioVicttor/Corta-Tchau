@@ -61,7 +61,10 @@ export default function Footer() {
         </div>
       </div>
       <div style={{ marginLeft: "15px" }}>
-        <div style={{ textAlign: "center", height: "50px" }}></div>
+        <div style={{ textAlign: "center", height: "50px" }}>
+          <strong>Contato</strong>
+          <hr/>
+        </div>
         <div style={{ display: "grid" }}>
           <span>Corta & Tchau - Jundiai</span>
           <strong>Rua dos Bobos, 0 - Vraum</strong>
